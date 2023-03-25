@@ -1,0 +1,53 @@
+<div class="row">
+   <div class="formContainer">
+    <h3 style="text-align: center;color: aliceblue;">TodoList</h3>
+      <div class="form-group">
+       <form [formGroup]="todoListForm" (ngSubmit)="todo(todoListForm.value)">
+         <div class="col">
+            <label for="id"><b>S No.</b></label>
+            &nbsp;
+            <input type="text" placeholder="Enter id" name="id" oninput="this.value = this.value.replace(/[^0-9]/g, '')" formControlName="id">
+            <span style="color:brown"*ngIf="id && id.invalid && id.errors?.['required'] && showErrors">This field is not valid</span>
+         </div>
+         
+         <div class="col">
+            <label for="name"><b>Name</b></label>
+            &nbsp;
+            <input type="text" placeholder="Enter name"  name="name" formControlName="name">
+            <span style="color:brown"*ngIf="name && name.invalid && name.errors?.['required'] && showErrors">This field is not valid</span>
+        </div> 
+          
+         <div class="col">
+          <label for="Task"><b>Task</b></label>
+          &nbsp;
+          <input type="text" placeholder="Enter task" name="task" formControlName="task">
+          <span style="color:brown"*ngIf="task && task.invalid && task.errors?.['required'] && showErrors">This field is not valid</span>
+         </div> 
+        
+         <div class="col">
+          <label for="date"><b>Date</b></label>
+          &nbsp;
+          <input type="date" placeholder="Enter date" name="date" formControlName="date">
+          <span style="color:brown"*ngIf="date && date.invalid && date.errors?.['required'] && showErrors">This field is not valid</span>
+        </div> 
+         
+        <div class="col">
+            <label for="status"><b>Status</b></label>
+            &nbsp;
+            <select id="status" name="status" formControlName="status">
+              <option value="3"  >Completed</option>
+              <option value="4"  >On Hold</option>
+              <option value="1"  >Not Started</option>
+              <option value="2"  >InProgress</option>
+              <option value="9"  >Cancelled</option>
+            </select> 
+        </div>
+          <input type="submit" class="button" value="{{editMode ? 'Update Task' : 'Add Task'}}">
+       </form>
+      </div>
+    </div>
+    <div class="col">
+       <app-tasks></app-tasks>
+    </div>
+   
+  </div>

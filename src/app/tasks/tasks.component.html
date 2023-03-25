@@ -1,0 +1,43 @@
+<section class="vh-100 gradient-custom-2">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-md-12 col-xl-10">
+  
+          <div class="card mask-custom">
+            <div class="card-body p-4 text-white">
+  
+              <div class="text-center pt-3 pb-2">
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-todo-list/check1.webp"
+                  alt="Check" width="60">
+                <h2 class="my-4">Task List</h2>
+              </div>
+  
+              <table class="table text-white mb-0">
+                <thead>
+                  <tr>
+                    <th scope="col">No.</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Task</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Delete</th>
+                    <th scope="col">Update</th>
+                  </tr>
+                </thead>
+              <tr *ngFor="let tasks of todoListArray;let j=index">
+                <td scope="col">{{tasks.id}}</td>
+                <td scope="col">{{tasks.name}}</td>
+                <td scope="col">{{tasks.task}}</td>
+                <td scope="col">{{tasks.date}}</td>
+                <td scope="col">{{tasks.status}}</td>
+                <td><button class="button" (click)="delete(j)">Delete</button></td>
+                <td><button class="button"  (click)="update(tasks.id,false)">Update</button></td>
+              </tr>
+              </table>
+            </div>
+          </div>
+  
+        </div>
+      </div>
+    </div>
+  </section>

@@ -1,0 +1,43 @@
+.gradient-custom-2 {
+    /* fallback for old browsers */
+    background: #7e40f6;
+    width: 500px;
+    height: 500px;
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(
+      to right,
+      rgba(126, 64, 246, 1),
+      rgba(80, 139, 252, 1)
+    );
+  
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(
+      to right,
+      rgba(126, 64, 246, 1),
+      rgba(80, 139, 252, 1)
+    );
+  }
+  
+  .mask-custom {
+    background: rgba(24, 24, 16, 0.2);
+    border-radius: 2em;
+    backdrop-filter: blur(25px);
+    border: 2px solid rgba(255, 255, 255, 0.05);
+    background-clip: padding-box;
+    box-shadow: 10px 10px 10px rgba(46, 54, 68, 0.03);
+  }
+  .button{
+    background-color: whitesmoke;
+    border-radius: 50px;
+    border-width: 0;
+    box-shadow: #1919190a 0 0 1px 0, rgba(0, 0, 0, 0.1) 0 3px 4px 0;
+    color: rgba(126, 64, 246, 1);
+    cursor: pointer;  
+    display: inline-block;
+    font-family: Arial, sans-serif;
+    font-size: 1em;
+    height: 50px;
+    padding: 0 25px;
+    transition: all 200ms;
+}
+tr:hover {background-color:rebeccapurple;}
