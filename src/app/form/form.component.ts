@@ -53,7 +53,12 @@ editMode=false;
   todo(data:any){
      if(this.editMode==false){
       if(this.todoListForm.valid){
-        todoArray.push(data)
+            if(!todoArray.some((el:any) => el.id === data.id)){+
+              todoArray.push(data)
+            }
+            else{
+              alert('Id cannot be same')
+            }
       }else{
         this.showErrors=true;
       }
