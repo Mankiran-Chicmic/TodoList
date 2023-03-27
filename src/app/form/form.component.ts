@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { todoArray } from 'src/todoArray';
 import { TodoService } from '../todo.service';
+
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
@@ -9,15 +10,11 @@ import { TodoService } from '../todo.service';
 })
 export class FormComponent {
   todoListForm=new FormGroup({
-    id:new FormControl('',[Validators.required]),
     name:new FormControl('',[Validators.required]),
     task:new FormControl('',[Validators.required]),
     date:new FormControl('',[Validators.required]),
     status:new FormControl('',[Validators.required]),
   })
- get id(){
-  return this.todoListForm.get('id')
- }
 
  get task(){
   return this.todoListForm.get('task')
@@ -37,8 +34,8 @@ export class FormComponent {
 editMode=false;
  constructor(private todoService:TodoService){
   this.todoService.dataEmitter.subscribe((res:any)=>{
+    console.log("res===>",res)
       this.todoListForm.setValue({
-        id:res.data.id,
         name:res.data.name,
         task:res.data.task,
         date:res.data.date,
@@ -50,20 +47,30 @@ editMode=false;
 @Input() data=new EventEmitter<{form:any}>
  todoListArray=todoArray
  showErrors=false 
+
   todo(data:any){
-     if(this.editMode==false){
-      if(this.todoListForm.valid){
-            if(!todoArray.some((el:any) => el.id === data.id)){+
-              todoArray.push(data)
-            }
-            else{
-              alert('Id cannot be same')
-            }
-      }else{
+     if(this.editMode==false)
+     {
+      if(this.todoListForm.valid)
+      {
+              todoArray.push({"id":todoArray.length+1,"data":data})
+              this.todoListForm.setValue({
+                name:"",
+                task:"",
+                date:"",
+                status:""
+              })
+      }
+      else
+      {
         this.showErrors=true;
       }
-     }else{
-       todoArray[data.id-1]=data
+     }
+     else
+     {
+      console.log("=====>todoArray",todoArray[todoArray[0].id].data)
+      console.log("=====>todoArrayData",data)
+       todoArray[todoArray[0].id].data=data
      }
   }
 

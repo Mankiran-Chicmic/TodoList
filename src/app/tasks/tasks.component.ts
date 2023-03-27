@@ -9,17 +9,21 @@ import { TodoService } from '../todo.service';
 })
 export class TasksComponent {
 
-  newTodoForm=new FormGroup({})
   constructor(private todoService:TodoService){
   }
+
 todoListArray=todoArray
+
   delete(index:any){
     todoArray.splice(index,1)
   }
 
   update(id:number,editMode:boolean){
-    let currentList=todoArray.find((p:any)=>{return p.id===id})
-    editMode=true
-    this.todoService.raiseDataEmitterEvent(currentList,editMode);
+    let currentList=todoArray.find((p:any)=>{
+      //console.log("===>",p.id)
+      return p.id===id})
+      editMode=true
+      console.log("====>Current List",currentList)
+      this.todoService.raiseDataEmitterEvent(currentList.data,editMode);
   }
 }

@@ -25,12 +25,13 @@
                     <th scope="col">Update</th>
                   </tr>
                 </thead>
+
               <tr *ngFor="let tasks of todoListArray;let j=index">
-                <td scope="col">{{tasks.id}}</td>
-                <td scope="col">{{tasks.name}}</td>
-                <td scope="col">{{tasks.task}}</td>
-                <td scope="col">{{tasks.date}}</td>
-                <td scope="col">{{tasks.status}}</td>
+                <th scope="col">{{tasks.id}}</th>
+                <td scope="col">{{tasks.data.name}}</td>
+                <td scope="col">{{tasks.data.task}}</td>
+                <td scope="col">{{tasks.data.date}}</td>
+                <td scope="col">{{tasks.data.status}}</td>
                 <td><button class="button" (click)="delete(j)">Delete</button></td>
                 <td><button class="button"  (click)="update(tasks.id,false)">Update</button></td>
               </tr>

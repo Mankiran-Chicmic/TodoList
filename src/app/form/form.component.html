@@ -3,12 +3,12 @@
     <h3 style="text-align: center;color: aliceblue;">TodoList</h3>
       <div class="form-group">
        <form [formGroup]="todoListForm" (ngSubmit)="todo(todoListForm.value)">
-         <div class="col">
+         <!-- <div class="col">
             <label for="id"><b>S No.</b></label>
             &nbsp;
             <input type="text" placeholder="Enter id" name="id" oninput="this.value = this.value.replace(/[^0-9]/g, '')" formControlName="id">
             <span style="color:brown"*ngIf="id && id.invalid && id.errors?.['required'] && showErrors">This field is not valid</span>
-         </div>
+         </div> -->
          
          <div class="col">
             <label for="name"><b>Name</b></label>
@@ -30,7 +30,7 @@
           <input type="date" placeholder="Enter date" name="date" formControlName="date">
           <span style="color:brown"*ngIf="date && date.invalid && date.errors?.['required'] && showErrors">This field is not valid</span>
         </div> 
-         
+     <br>    
         <div class="col">
             <label for="status"><b>Status</b></label>
             &nbsp;
@@ -42,6 +42,7 @@
               <option value="9"  >Cancelled</option>
             </select> 
         </div>
+        <br>
           <input type="submit" class="button" value="{{editMode ? 'Update Task' : 'Add Task'}}">
        </form>
       </div>
